@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground  } from 'react-native';
 import React, { useState } from 'react';
 
 const LoginPage = ({ navigation }) => {
@@ -19,18 +19,20 @@ const LoginPage = ({ navigation }) => {
 
     return (
       <View style={styles.container}>
+          <ImageBackground source={require('../assets/tokoBG.jpg')} style={styles.image} blurRadius={4}>
+            <Image 
+                source={require('../assets/Untitled.png')} // Replace with your logo URL or local asset
+                style={styles.logo} 
+            />
+            {/* Title */}
+            <Text style={styles.title}>RendezView</Text>
+            <Text style={styles.subtitle}>Safe, Convienent, Private</Text>
+            <TouchableOpacity onPress={button} style={styles.button}>
+                <Text style={styles.buttonText}>{buttonText}</Text>
+            </TouchableOpacity>
+            <StatusBar style="auto" />
+          </ImageBackground>
           {/* Logo */}
-          <Image 
-              source={require('../assets/Untitled.png')} // Replace with your logo URL or local asset
-              style={styles.logo} 
-          />
-          {/* Title */}
-          <Text style={styles.title}>RendezView</Text>
-          <Text style={styles.subtitle}>Safe, Convienent, Private</Text>
-          <TouchableOpacity onPress={button} style={styles.button}>
-              <Text style={styles.buttonText}>{buttonText}</Text>
-          </TouchableOpacity>
-          <StatusBar style="auto" />
       </View>
   );
 }
@@ -49,16 +51,18 @@ logo: {
 },
 subtitle: {
   fontSize: 20, // Subtitle font size
-  color: '#666', // Subtitle text color
-  marginBottom: 20, // Space between the subtitle and button
+  color: '#fff', // Subtitle text color
+  marginBottom: 50// Space between the subtitle and button
 },
 title: {
   fontSize: 50, // Title font size
   fontWeight: 'bold', // Bold font style
-  marginBottom: 0, // Space between the title and button
+  marginBottom: 0,
+  color: '#fff', // Space between the title and button
+  font: '../assets/fonts/ALBAM___.TTF'
 },
 button: {
-  backgroundColor: '#007BFF',
+  backgroundColor: '#F2AC57',
   padding: 10,
   borderRadius: 5,
   marginTop: 0,
@@ -69,9 +73,15 @@ button: {
   alignSelf: 'center',
 },
 buttonText: {
-  color: '#fff',
+  color: '#093048',
   fontSize: 30,
   textAlign: 'center',
+},
+image: {
+  width: 499,
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',  
 },
 });
 
