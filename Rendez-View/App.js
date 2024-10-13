@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginPage from './pages/LoginPage';  // Correct import path for LoginPage
-import HomePage from './pages/HomePage';      // Correct import path for HomePage
+import LoginPage from './PAGES/loginPage';  // Updated import path to match actual file structure
+import HomePage from './PAGES/homePage';    // Updated for consistency (if needed)
 
 const Stack = createStackNavigator();
 

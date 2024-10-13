@@ -1,32 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView from 'react-native-maps';
-
-let initialRegion = {
-  latitude: 35.6620,   // San Francisco
-  longitude: 139.7038,
-  latitudeDelta: 0.01,
-  longitudeDelta: 0.01,
-};
+import Rendezvous from '../rendevous';  // Match the actual file name
 
 const HomePage = () => {
-  const [region, setRegion] = useState(initialRegion);
-
-  const onRegionChangeComplete = (region) => {
-    console.log('Region changed:', region);
-    setRegion(region); // Update the state with the new region
-  };
-
-  // TODO: Add SOS button
-
   return (
     <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={initialRegion} // Set the initial region
-        onRegionChangeComplete={onRegionChangeComplete} // Detect region change completion
-      />
+      <Rendezvous />
       <Text style={styles.text}>Group</Text>
       <StatusBar style="auto" />
     </View>
@@ -40,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   map: {
-    height: '80%', // Adjust size as needed
+    height: '100%', // Adjust size as needed
     width: '100%',
   },
   text: {

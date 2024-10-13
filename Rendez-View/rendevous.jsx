@@ -10,6 +10,7 @@ const initialRegion = {
 };
 
 const Rendezvous = () => {
+    console.log("Rendezvous component rendered");
     const [region, setRegion] = useState(initialRegion);
     const [rendezvousPoint, setRendezvousPoint] = useState(null);
 
