@@ -1,15 +1,23 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Platform, Pressable } from 'react-native';
 
-const CustomCard = ({ title, description, imageSource }) => {
+const CustomCard = ({ title, description, imageSource, navigation, page }) => {
+
+  const button = () => {
+    // Simulate loading delay before navigating
+    setTimeout(() => {
+      navigation.navigate(page);
+    }, 1000); // 1 second delay
+  };
+
   return (
-    <View style={styles.card}>
+    <Pressable style={styles.card} onPress={button}>
       <Image source={imageSource} style={styles.image} />
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 
