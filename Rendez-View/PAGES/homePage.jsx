@@ -18,6 +18,8 @@ const HomePage = () => {
     setRegion(region); // Update the state with the new region
   };
 
+
+  // TODO: Scrolling
   return (
     <View style={styles.container}>
       <MapView
