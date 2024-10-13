@@ -1,5 +1,16 @@
+<<<<<<< Updated upstream
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+=======
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginPage from './PAGES/loginPage';  // Updated import path to match actual file structure
+import HomePage from './PAGES/homePage';    // Updated for consistency (if needed)
+
+
+const Stack = createStackNavigator();
+>>>>>>> Stashed changes
 
 export default function App() {
   return (
