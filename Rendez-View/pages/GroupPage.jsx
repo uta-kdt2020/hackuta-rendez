@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Platform, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 //import PushNotification from 'react-native-push-notification';  // Add this if you haven't imported it yet
 import CustomCard from './CustomCard';
