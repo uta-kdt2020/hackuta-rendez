@@ -20,10 +20,9 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     backgroundColor: '#fff',
     elevation: 3, // For Android shadow
-    shadowColor: '#000', // For iOS shadow
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
     margin: 10,
   },
   image: {

@@ -37,13 +37,13 @@ const HomePage = () => {
       <CustomCard 
         title="Japan Trip 2024"
         description="Last active at 2:50pm  3.4 miles away"
-        imageSource={{ uri: './assets/boy.jpg' }} 
+        imageSource={{ uri: 'https://media.flytographer.com/uploads/2022/07/Tokyo-photo-spots-photographer-flytographer-8.jpeg' }} 
       />
-      
+
       <CustomCard 
         title="Tokyo City Vibes"
         description="Last active at 10:36am  1.2 miles away"
-        imageSource={{ uri: './assets/girl.jpg' }} 
+        imageSource={{ uri: 'https://i.insider.com/5c002ebcde34c4019c11bd94?width=700' }} 
       />
       
       <StatusBar style="auto" />
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     fontSize: 32, // Adjust size as needed
     textAlign: 'center', // Center the text
     marginTop: 20,
+    fontWeight: 'bold',
     color: '#093048',
     //font: 
   },
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
     left: 150,
   },
   buttonText: {
-    color: '#fff',
+    color: '#093048',
+    fontWeight: 'bold',
     fontSize: 15,
     textAlign: 'center',
   },
