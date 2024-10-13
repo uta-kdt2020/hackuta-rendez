@@ -30,7 +30,7 @@ const SosPage = ( { navigation } ) => {
 const styles = StyleSheet.create({
 container: {
   flex: 1,
-  backgroundColor: '#5C9EB7',
+  backgroundColor: '#fff',
   alignItems: 'center',
   justifyContent: 'center',
 },
