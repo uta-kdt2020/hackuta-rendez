@@ -1,29 +1,28 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import MapPage from './PAGES/mapPage';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginPage from './pages/LoginPage';  // Correct import path for LoginPage
+import HomePage from './pages/HomePage';      // Correct import path for HomePage
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <MapPage />
-      <Text style={styles.text}>Open via npx expo start while being cd'd into Rendez-View</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        {/* Define the Login Screen */}
+        <Stack.Screen 
+          name="Login" 
+          component={LoginPage} 
+          options={{ headerShown: false }}  // Hide the header for cleaner UI
+        />
+        
+        {/* Define the Home Screen */}
+        <Stack.Screen 
+          name="Home" 
+          component={HomePage} 
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-  },
-  text: {
-    color: '#fff',
-    position: 'absolute',
-    bottom: 20,
-    textAlign: 'center',
-    width: '100%',
-  },
-});
-
