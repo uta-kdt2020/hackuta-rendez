@@ -1,29 +1,27 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Platform } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Platform, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 //import PushNotification from 'react-native-push-notification';  // Add this if you haven't imported it yet
 import Rendezvous from '../rendevous';  // Match the actual file name
 import CustomCard from './CustomCard';
 
 const HomePage = ({ navigation }) => {
-  
+
   const [buttonText, setButtonText] = useState("SOS");
 
-  // Send local notification for React Native (Android/iOS)
-  // const sendLocalNotification = () => {
-  //   PushNotification.localNotification({
-  //     message: "My Notification Message",  // (required)
-  //     playSound: true,  // (optional) Default is true
-  //     soundName: "default",  // (optional) Sound to play when the notification is shown
-  //   });
-  // };
+  const sos = () => {
+    navigation.navigate('Sos');
+  }
 
   const button = () => {
     navigation.navigate('Home'); // Delay for 1 second to simulate loading
-    };
+  };
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={sos} style={styles.button}>
+        <Text style={styles.buttonText}>{buttonText}</Text>
+      </TouchableOpacity>
       <Rendezvous />
       <Text style={styles.text}>GroupID: ABCD</Text>
 
@@ -56,8 +54,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   button: {
-    backgroundColor: '#fc8638',
+    backgroundColor: 'red',
     padding: 10,
+    marginTop: 5,
     borderRadius: 5,
     marginTop: 0,
     justifyContent: 'center',
