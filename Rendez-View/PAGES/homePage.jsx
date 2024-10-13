@@ -1,33 +1,38 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Platform, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView from 'react-native-maps';
+//import PushNotification from 'react-native-push-notification';  // Add this if you haven't imported it yet
+import Rendezvous from '../rendevous';  // Match the actual file name
+import CustomCard from './CustomCard';
 
-let initialRegion = {
-  latitude: 35.6620,   // San Francisco
-  longitude: 139.7038,
-  latitudeDelta: 0.01,
-  longitudeDelta: 0.01,
-};
+const HomePage = ({ navigation }) => {
 
-const HomePage = () => {
-  const [region, setRegion] = useState(initialRegion);
+  const [buttonText, setButtonText] = useState("SOS");
 
-  const onRegionChangeComplete = (region) => {
-    console.log('Region changed:', region);
-    setRegion(region); // Update the state with the new region
+  const sos = () => {
+    navigation.navigate('Sos');
+  }
+
+  const button = () => {
+    navigation.navigate('Home'); // Delay for 1 second to simulate loading
   };
 
-
-  // TODO: Scrolling
   return (
     <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={initialRegion} // Set the initial region
-        onRegionChangeComplete={onRegionChangeComplete} // Detect region change completion
+      <TouchableOpacity onPress={sos} style={styles.button}>
+        <Text style={styles.buttonText}>{buttonText}</Text>
+      </TouchableOpacity>
+      <Rendezvous />
+      <Text style={styles.text}>GroupID: ABCD</Text>
+
+      <CustomCard 
+        title="Shibuya Crossing"
+        description="RDV at 6:00pm at Pin"
+        imageSource={{ uri: '../assets/Untitled.png' }} 
+        navigation={navigation}
+        page="Group"
       />
-      <Text style={styles.text}>Group</Text>
+      
       <StatusBar style="auto" />
     </View>
   );
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   map: {
-    height: '80%', // Adjust size as needed
+    height: '100%', // Adjust size as needed
     width: '100%',
   },
   text: {
@@ -48,6 +53,24 @@ const styles = StyleSheet.create({
     textAlign: 'center', // Center the text
     marginTop: 20,
   },
+  button: {
+    backgroundColor: 'red',
+    padding: 10,
+    marginTop: 5,
+    borderRadius: 5,
+    marginTop: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 90,
+    height: 40,
+    alignSelf: 'center',
+    left: 150,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 15,
+    textAlign: 'center',
+  },
 });
 
-export default HomePage;  // Change to default export
+export default HomePage;
