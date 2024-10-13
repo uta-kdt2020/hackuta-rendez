@@ -1,18 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'; 
 
 const initialRegion = {
   latitude: 35.6620,
   longitude: 139.7038,
-  latitudeDelta: 0.01,
-  longitudeDelta: 0.01,
+  latitudeDelta: 0.1,
+  longitudeDelta: 0.1,
 };
 
-const Rendezvous = () => {
-    console.log("Rendezvous component rendered");
+const people = [
+    {
+      name: "Alice",
+      location: {
+        latitude: 35.6895,  // Tokyo
+        longitude: 139.6917
+      }
+    },
+    {
+      name: "Bob",
+      location: {
+        latitude: 35.7425,  // Approximately 25 miles northwest (Saitama)
+        longitude: 139.6295
+      }
+    },
+    {
+      name: "Charlie",
+      location: {
+        latitude: 35.6355,  // Approximately 25 miles southeast (Chiba)
+        longitude: 140.1175
+      }
+    },
+    {
+      name: "Diana",
+      location: {
+        latitude: 35.6895,  // Approximately 25 miles southwest (Yokohama)
+        longitude: 139.6100
+      }
+    }
+];
+
+console.log(people);
+
+const Rendezvous = ({ isSOSActive }) => {
+    console.log("Rendezvous component rendered, isSOSActive:", isSOSActive);
     const [region, setRegion] = useState(initialRegion);
     const [rendezvousPoint, setRendezvousPoint] = useState(null);
+    const [showMarkers, setShowMarkers] = useState(true);
+
+    useEffect(() => {
+        console.log("useEffect triggered, isSOSActive:", isSOSActive);
+        let interval;
+        if (isSOSActive) {
+            console.log("Setting up interval for flashing effect");
+            interval = setInterval(() => {
+                setShowMarkers(prev => !prev);
+            }, 500);
+        } else {
+            console.log("SOS not active, showing markers");
+            setShowMarkers(true);
+        }
+
+        return () => {
+            if (interval) {
+                console.log("Clearing interval");
+                clearInterval(interval);
+            }
+        };
+    }, [isSOSActive]);
 
     const onRegionChange = (newRegion) => {
         setRegion(newRegion);
@@ -37,6 +92,7 @@ const Rendezvous = () => {
     return (
         <View style={styles.container}>
             <MapView 
+                key={showMarkers ? 'visible' : 'hidden'}
                 style={styles.map} 
                 initialRegion={initialRegion} 
                 onRegionChange={onRegionChange}
@@ -52,6 +108,14 @@ const Rendezvous = () => {
                         title="Rendezvous Point"
                     />
                 )}
+                {showMarkers && people.map((user, index) => (
+                    <Marker
+                        key={index}
+                        coordinate={user.location}
+                        title={user.name}
+                        pinColor={'blue'}
+                    />
+                ))}
             </MapView>
         </View>
     );
