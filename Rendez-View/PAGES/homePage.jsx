@@ -25,18 +25,11 @@ const HomePage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Rendezvous />
-      <Text style={styles.text}>Group</Text>
+      <Text style={styles.text}>GroupID: ABCD</Text>
 
       <CustomCard 
-        title="Card Title 1"
-        description="This is a description for card 1."
-        imageSource={{ uri: '../assets/Untitled.png' }} 
-        navigation={navigation}
-        page="Group"
-      />
-      <CustomCard 
-        title="Card Title 2"
-        description="This is a description for card 2."
+        title="Shibuya Crossing"
+        description="RDV at 6:00pm at Pin"
         imageSource={{ uri: '../assets/Untitled.png' }} 
         navigation={navigation}
         page="Group"
