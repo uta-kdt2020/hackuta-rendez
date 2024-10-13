@@ -5,32 +5,25 @@ import { StatusBar } from 'expo-status-bar';
 import Rendezvous from '../rendevous';  // Match the actual file name
 import CustomCard from './CustomCard';
 
-const HomePage = () => {
+const HomePage = ({ navigation }) => {
+  
   const [buttonText, setButtonText] = useState("SOS");
 
   // Send local notification for React Native (Android/iOS)
-  const sendLocalNotification = () => {
-    PushNotification.localNotification({
-      message: "My Notification Message",  // (required)
-      playSound: true,  // (optional) Default is true
-      soundName: "default",  // (optional) Sound to play when the notification is shown
-    });
-  };
+  // const sendLocalNotification = () => {
+  //   PushNotification.localNotification({
+  //     message: "My Notification Message",  // (required)
+  //     playSound: true,  // (optional) Default is true
+  //     soundName: "default",  // (optional) Sound to play when the notification is shown
+  //   });
+  // };
 
   const button = () => {
-    setButtonText("Sending");  // Update the button text
-
-    // Reset the button text after 1 second
-    setTimeout(() => {
-      setButtonText("SOS");
-    }, 1000);
-  };
+    navigation.navigate('Home'); // Delay for 1 second to simulate loading
+    };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={button} style={styles.button}>
-        <Text style={styles.buttonText}>{buttonText}</Text>
-      </TouchableOpacity>
       <Rendezvous />
       <Text style={styles.text}>Group</Text>
 
@@ -38,11 +31,15 @@ const HomePage = () => {
         title="Card Title 1"
         description="This is a description for card 1."
         imageSource={{ uri: '../assets/Untitled.png' }} 
+        navigation={navigation}
+        page="Group"
       />
       <CustomCard 
         title="Card Title 2"
         description="This is a description for card 2."
         imageSource={{ uri: '../assets/Untitled.png' }} 
+        navigation={navigation}
+        page="Group"
       />
       
       <StatusBar style="auto" />
