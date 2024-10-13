@@ -1,45 +1,28 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView from 'react-native-maps';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginPage from './pages/LoginPage';  // Correct import path for LoginPage
+import MapPage from './pages/MapPage';      // Correct import path for MapPage
 
-let initialRegion = {
-  latitude: 37.7749,   // San Francisco
-  longitude: -122.4194,
-  latitudeDelta: 0.0922,
-  longitudeDelta: 0.0421,
-};
+const Stack = createStackNavigator();
 
 export default function App() {
-  const [region, setRegion] = useState(initialRegion);
-
-  const onRegionChange = (region) => {
-    console.log('Region changed:', region);
-    setRegion(region); // Update the state with the new region
-  };
-
   return (
-    <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={initialRegion} // Set the initial region
-        onRegionChange={onRegionChange} // Detect region change
-      />
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        {/* Define the Login Screen */}
+        <Stack.Screen 
+          name="Login" 
+          component={LoginPage} 
+          options={{ headerShown: false }}  // Hide the header for cleaner UI
+        />
+        
+        {/* Define the Map Screen */}
+        <Stack.Screen 
+          name="Map" 
+          component={MapPage} 
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  map: {
-    height: '80%', // Adjust size as needed
-    width: '100%',
-  },
-});
