@@ -32,17 +32,18 @@ const HomePage = () => {
         <Text style={styles.buttonText}>{buttonText}</Text>
       </TouchableOpacity>
       <Rendezvous />
-      <Text style={styles.text}>Group</Text>
+      <Text style={styles.text}>Recent Groups</Text>
 
       <CustomCard 
-        title="Card Title 1"
-        description="This is a description for card 1."
-        imageSource={{ uri: '../assets/Untitled.png' }} 
+        title="Japan Trip 2024"
+        description="Last active at 2:50pm  3.4 miles away"
+        imageSource={{ uri: './assets/boy.jpg' }} 
       />
+      
       <CustomCard 
-        title="Card Title 2"
-        description="This is a description for card 2."
-        imageSource={{ uri: '../assets/Untitled.png' }} 
+        title="Tokyo City Vibes"
+        description="Last active at 10:36am  1.2 miles away"
+        imageSource={{ uri: './assets/girl.jpg' }} 
       />
       
       <StatusBar style="auto" />
@@ -53,7 +54,7 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#5C9EB7',
     justifyContent: 'center',
   },
   map: {
@@ -61,9 +62,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   text: {
-    fontSize: 38, // Adjust size as needed
+    fontSize: 32, // Adjust size as needed
     textAlign: 'center', // Center the text
     marginTop: 20,
+    color: '#093048',
+    //font: 
   },
   button: {
     backgroundColor: '#fc8638',
