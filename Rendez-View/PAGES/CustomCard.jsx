@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
 const CustomCard = ({ title, description, imageSource }) => {
   return (
-    <View style={styles.cardContainer}>
+    <View style={styles.card}>
       <Image source={imageSource} style={styles.image} />
-      <View style={styles.textContainer}>
+      <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
       </View>
@@ -14,33 +14,35 @@ const CustomCard = ({ title, description, imageSource }) => {
 };
 
 const styles = StyleSheet.create({
-  cardContainer: {
-    backgroundColor: 'white',
+  card: {
+    flexDirection: 'row',
     borderRadius: 10,
-    shadowColor: '#000',
+    overflow: 'hidden',
+    backgroundColor: '#fff',
+    elevation: 3, // For Android shadow
+    shadowColor: '#000', // For iOS shadow
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
     margin: 10,
-    overflow: 'hidden' 
   },
   image: {
-    height: 200,
-    width: '100%'
+    width: 100,
+    height: 100,
+    resizeMode: 'cover',
   },
-  textContainer: {
-    padding: 15
+  content: {
+    padding: 10,
+    justifyContent: 'center',
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 5
   },
   description: {
     fontSize: 14,
-    color: 'gray'
-  }
+    color: '#666',
+  },
 });
 
 export default CustomCard;
