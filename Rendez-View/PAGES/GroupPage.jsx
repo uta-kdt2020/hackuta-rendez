@@ -20,29 +20,29 @@ const GroupPage = ( {navigation} ) => {
       <Text style={styles.text}>Group</Text>
 
       <CustomCard 
-        title="Card Title 1"
-        description="This is a description for card 1."
+        title="Rudy Orozco"
+        description="Last Seen At 2:00pm"
         imageSource={{ uri: '../assets/Untitled.png' }}
         navigation={navigation}
         page="Group"
       />
       <CustomCard 
-        title="Card Title 2"
-        description="This is a description for card 2."
+        title="Denzel Tarry"
+        description="Last Seen At 1:00pm"
         imageSource={{ uri: '../assets/Untitled.png' }} 
         navigation={navigation}
         page="Group"
       />
       <CustomCard 
-        title="Card Title 3"
-        description="This is a description for card 3."
+        title="Khoi Fish"
+        description="Currently Live"
         imageSource={{ uri: '../assets/Untitled.png' }} 
         navigation={navigation}
         page="Group"
       />
       <CustomCard 
-        title="Card Title 4"
-        description="This is a description for card 4."
+        title="Ei Chelle"
+        description="Last Seen 3 Minutes Ago"
         imageSource={{ uri: '../assets/Untitled.png' }} 
         navigation={navigation}
         page="Group"
