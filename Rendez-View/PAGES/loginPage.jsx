@@ -6,11 +6,15 @@ const LoginPage = ({ navigation }) => {
     const [buttonText, setButtonText] = useState("Get Started_");
     
     const button = () => {
-        setButtonText("Get Started_");
-        // Navigate to MapPage after setting the text
+        setButtonText("Please Wait_");
+        // Navigate to HomePage after setting the text
         setTimeout(() => {
-            navigation.navigate('Map');
+            navigation.navigate('Home');
         }, 1000);  // Delay for 1 second to simulate loading
+        
+        setTimeout(() => {
+          setButtonText("Get Started_");
+      }, 1000);
     };
 
     return (

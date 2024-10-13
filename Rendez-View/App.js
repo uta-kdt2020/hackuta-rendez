@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginPage from './pages/LoginPage';  // Correct import path for LoginPage
-import MapPage from './pages/MapPage';      // Correct import path for MapPage
+import HomePage from './pages/HomePage';      // Correct import path for HomePage
 
 const Stack = createStackNavigator();
 
@@ -17,10 +17,10 @@ export default function App() {
           options={{ headerShown: false }}  // Hide the header for cleaner UI
         />
         
-        {/* Define the Map Screen */}
+        {/* Define the Home Screen */}
         <Stack.Screen 
-          name="Map" 
-          component={MapPage} 
+          name="Home" 
+          component={HomePage} 
         />
       </Stack.Navigator>
     </NavigationContainer>
